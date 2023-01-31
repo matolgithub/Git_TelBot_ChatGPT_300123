@@ -1,9 +1,12 @@
+from os import getenv
 import openai
 import telebot
+from dotenv import load_dotenv
 
-openai.api_key = ""
-bot = telebot.TeleBot("5833252827:AAFSvcWFqc6-2Tovojdy7WIEhXbnZHd9dZs")
+load_dotenv()
 
+openai.api_key = getenv("API_KEY")
+bot = telebot.TeleBot(getenv("BOT_TOKEN"))
 
 @bot.message_handler(func=lambda _: True)
 def handle_message(message):
